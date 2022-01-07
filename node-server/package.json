@@ -1,0 +1,21 @@
+{
+  "name": "nodeapi",
+  "version": "1.0.0",
+  "description": "creating restful apis to meet the needs of shopping cart application",
+  "main": "server.js",
+  "scripts": {
+    "build": "node server",
+    "start": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MIT",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "mongoose": "6.0.13"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.15"
+  }
+}
