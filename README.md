@@ -6,20 +6,20 @@ To run the application follow these steps:
 
 2. Clone in your own machine:
 
-  git clone https://github.com/EstebanHernandez1/VaccineApp.git
+  * git clone https://github.com/EstebanHernandez1/VaccineApp.git
 
 3. Run the node api: 
 
-  cd - node-server 
-  run - npm i 
-  then - npm start
+ * cd - node-server 
+ * run - npm i 
+ * then - npm start
 
 4. Run the reactapp:
 
-  Open a separate terminal
-  cd - reactapp 
-  run - npm i 
-  then - npm start
+  * Open a separate terminal
+  * cd - reactapp 
+  * run - npm i 
+  * then - npm start
 
 5. Open web browser and go to local host: http://localhost:9092/
 
