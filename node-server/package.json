@@ -1,7 +1,7 @@
 {
   "name": "nodeapi",
   "version": "1.0.0",
-  "description": "creating restful apis to meet the needs of shopping cart application",
+  "description": "creating restful apis to meet the needs of Vaccine app",
   "main": "server.js",
   "scripts": {
     "build": "node server",
@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "nodemon": "2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EstebanHernandez1/VaccineApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EstebanHernandez1/VaccineApp/issues"
+  },
+  "homepage": "https://github.com/EstebanHernandez1/VaccineApp#readme"
 }

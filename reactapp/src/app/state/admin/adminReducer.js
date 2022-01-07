@@ -1,0 +1,42 @@
+//reducer is a function that contains logic to generate new state using actionType and payload
+// no surprises just simple calculation
+
+import * as ActionTypes from "../actionTypes";
+
+let INITIAL_STATE = {
+    admin : {
+        Name : {type:String, required: true},
+        Password : String,
+        Role : String,
+        Address : Object,
+        Allow : Boolean,
+        Session : String
+    }
+}
+
+
+//reducer function accepts a state and an action with action type and payload, the default state is initialstate
+let AdminReducer = (previousState = INITIAL_STATE, action) => {
+
+    switch (action.type) {   //signinuser
+
+        case ActionTypes.AddAdminToStore :
+            console.log("Add admin To Store Reducer", action)
+            //we will create a new state using payload passed from user component and container
+            //for every action dispatch reducer generates a new state
+            //let newState = Object.assign(previousState);
+            //newState.user = action.payload.user;
+
+            //...prevState = {xState, user, prod} // replacing user with action.payload.user
+            //best use of spread operator to preserve the immutability
+            
+            return {...previousState, user : action.payload.user}
+
+
+        default:
+            return previousState;
+    }
+
+}
+
+export default AdminReducer;

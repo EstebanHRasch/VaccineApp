@@ -12,10 +12,11 @@ mongoose.connect("mongodb://127.0.0.1/mernstack8");
 
 let AdminUserDocSchema = new mongooseSchema({
     Name : {type:String, required: true},
+    Password : String,
     Role : String,
+    Address : Object,
     Allow : Boolean,
-    Session : String,
-    Address : Object
+    Session : String
 },
 {
     versionKey : false //do not put version to to true, as by default it is true
