@@ -2,7 +2,7 @@
 
 To run the application follow these steps:
 
-1. Use "npm init" to initialize npm package manager for our repository
+1. Use "npm init" to initialize npm package manager for your repository
 
 2. Clone in your own machine:
 
