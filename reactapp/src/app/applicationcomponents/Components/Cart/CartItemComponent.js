@@ -23,9 +23,12 @@ const CartItemComponent = ({item, readOnly})=>{
     return(
         <tr>
             <td>{item.name}</td>
+            <td>{item.type}</td>
             <td>{item.price}</td>
+            <td>{item.effect}</td>
+            <td>{item.origin}</td>
+            <td>{item.doses}</td>
             <td>{item.desc}</td>
-            <td>{item.rating}</td>
             <td>{!readOnly ? 
                     <input type={"number"} value={qty} 
                     onChange={(evt)=>{setQty(evt.target.value)}} 

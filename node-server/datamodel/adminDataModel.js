@@ -10,13 +10,13 @@ mongooseSchema = mongoose.Schema; //getting the schema class to use for creating
 //creates db with name mernstack8 or opens a connection if already present
 mongoose.connect("mongodb://127.0.0.1/mernstack8");
 
-let AdminUserDocSchema = new mongooseSchema({
-    Name : {type:String, required: true},
-    Password : String,
-    Role : String,
-    Address : Object,
-    Allow : Boolean,
-    Session : String
+let AdminSchema = new mongooseSchema({
+    adminName : {type:String, required: true},
+    password : String,
+    role : String,
+    address : Object,
+    allow : Boolean,
+    session : String
 },
 {
     versionKey : false //do not put version to to true, as by default it is true
@@ -24,6 +24,6 @@ let AdminUserDocSchema = new mongooseSchema({
 )
 
 //this is going to be the collection name and will get plularised
-let AdminModel = mongoose.model("AdminUser", AdminUserDocSchema); 
+let AdminModel = mongoose.model("admin", AdminSchema); 
 
 module.exports = AdminModel;

@@ -3,17 +3,27 @@ import {NavLink} from "react-router-dom";
 import { connect } from "react-redux"
 
 let Header = (props)=>{
+    let adminName = props.adminName ? props.adminName : ""
+
     let userName = props.userName ? props.userName : ""
     return(
         <>
-              Hi <b>{userName +", "}</b> Welcome to SynergisticIT Shopping Cart 
-                {userName == "" ?<b> Please Login to see other features</b>:""}
+
+            {userName == "" && adminName == "" ? <b> Please Login to see other features</b> : 
+                adminName != "" && userName == ""  ?  <b>Hi Admin {adminName +", "} Welcome to Vaccine Application</b>  : 
+                <b>Hi User {userName +", "} Welcome to Vaccine Application</b>
+
+        }
+
             <hr/>
             <NavLink to="/home" className="button" activeClassName="success" >Home </NavLink> 
-            <NavLink to="/user" className="button" activeClassName="success" >{userName == "" ? "Login" : "User"} </NavLink> 
-            {userName &&
+            <NavLink to="/user" className="button" activeClassName="success" >{userName == "" ? "Patient Login" : "Patient"} </NavLink>
+            <NavLink to="/admin" className="button" activeClassName="success" >{adminName == "" ? "Admin Login" : "Admin"} </NavLink> 
+            {(userName || adminName) &&
                 <React.Fragment> 
                     <NavLink to="/product" className="button" activeClassName="success" >Product </NavLink> 
+                    <NavLink to="/vaccine" className="button" activeClassName="success" >Vaccine </NavLink>
+                    <NavLink to="/hospital" className="button" activeClassName="success" >Hospital </NavLink>
                     <NavLink to="/cart" className="button" activeClassName="success" >Cart </NavLink>
                     <NavLink to="/checkout" className="button" activeClassName="success" >Checkout </NavLink>
              {/* <Dropdown as={ButtonGroup}>
@@ -36,7 +46,8 @@ let Header = (props)=>{
 
 let mapStateToProps = (state)=>{
     return {
-        userName : state.userReducer.user.userName
+        userName : state.userReducer.user.userName,
+        adminName : state.adminReducer.admin.adminName
     }
 }
 

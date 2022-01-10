@@ -62,7 +62,7 @@ let UserComponent = (props)=>{
 
     return(
         <>
-            <h1>User Component Hook</h1>
+            <h1>Patient Login/Register</h1>
             <form className={"form col-md-10 userHook"} onSubmit={handleSubmit}>                
                 <label>
                     <b>User Name :</b>

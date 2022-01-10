@@ -5,14 +5,15 @@ import * as ActionTypes from "../actionTypes";
 
 let INITIAL_STATE = {
     admin : {
-        Name : {type:String, required: true},
-        Password : String,
-        Role : String,
-        Address : Object,
-        Allow : Boolean,
-        Session : String
+        adminName : "",
+        password : "",
+        role : "",
+        address : "",
+        allow : true,
+        session : ""
     }
 }
+
 
 
 //reducer function accepts a state and an action with action type and payload, the default state is initialstate
@@ -30,7 +31,7 @@ let AdminReducer = (previousState = INITIAL_STATE, action) => {
             //...prevState = {xState, user, prod} // replacing user with action.payload.user
             //best use of spread operator to preserve the immutability
             
-            return {...previousState, user : action.payload.user}
+            return {...previousState, admin : action.payload.admin}
 
 
         default:

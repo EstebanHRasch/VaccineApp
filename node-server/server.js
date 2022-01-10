@@ -7,11 +7,15 @@ const adminRouter = require('./route/adminRouter');
 const userRouter = require('./route/userRouter');
 const productRouter = require('./route/productRouter');
 const cartRouter = require('./route/cartRouter');
+const vaccineRouter = require('./route/vaccineRouter');
+const hospitalRouter = require('./route/hospitalRouter');
 
 const adminApp = express();
 const userApp = express();
 const productApp = express();
 const cartApp = express();
+const vaccineApp = express();
+const hospitalApp = express();
 
 app.use(cors());//cors - middleware is passed in express application to api's being public at global level
 app.use('/static', express.static('public')); // serve static files like images css using static middle ware
@@ -29,6 +33,12 @@ productApp.use('/', productRouter);
 
 app.use('/cart', cartApp);
 cartApp.use('/', cartRouter);
+
+app.use('/vaccine', vaccineApp);
+vaccineApp.use('/', vaccineRouter);
+
+app.use('/hospital', hospitalApp);
+hospitalApp.use('/', hospitalRouter);
 
 app.use('/', router); // all the requests coming to express app are routed to router.js
 

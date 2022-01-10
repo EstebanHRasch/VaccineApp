@@ -2,22 +2,29 @@ import React, {Fragment} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate }  from "react-router-dom";
 
-import CartItemComponent from "./CartItemComponent";
-import CartSummaryComponent from "./CartSummaryComponent";
+import CartItemComponent from "../Cart/CartItemComponent";
+import CartSummaryComponent from "../Cart/CartSummaryComponent";
+
+import CouponComponent from "../Coupon/CouponComponent";
+import CouponSummaryComponent from "../Coupon/CouponSummaryComponent";
+import DisplayCouponDetails from "../Coupon/CouponDisplayComponent";
+
+import { fetchCoupon } from "../../../state/coupon/couponActions";
 
 import { saveCartToDb } from "../../../state/cart/cartActions";
+import { saveOrderToDb } from "../../../state/order/orderActions";
+import { addOrder } from "../../../state/order/orderActions";
 
-let CartComponent = (props)=>{
+let CheckoutComponent = (props)=>{
 
     const cartList = useSelector((state)=>state.cartReducer);
     const User = useSelector((state)=>state.userReducer.user);
-    const loading = useSelector((state)=>state.loadingReducer.loading);
-    
-    const dispatchToSaveCart = useDispatch();
+    const Admin = useSelector((state)=>state.adminReducer.admin);
 
-    //to be used in cart summary component
+    let dispatchToSaveCart = useDispatch();
+
     let recalculate = (cartItems) => {
-        let amount = 0, 
+        let amount = 0,
             count = 0;
     
         for(let item of cartItems) {
@@ -31,28 +38,34 @@ let CartComponent = (props)=>{
         }
     }
 
-    const clickToSaveCart = (cartlist, id)=>{
-        if (!id) {
-            alert("User not logged in! Please login to save")
-        } else {
-            dispatchToSaveCart(saveCartToDb(cartlist, id))
-        }
-    }
-
     let navigate = useNavigate();
+
     let func = function(event) {      
         
-        navigate('/checkout');
+        navigate('/checkout/buy');
         event.preventDefault();
     }
 
+    let PlaceOrder = (cartlist, id)=>{
+        
+        if (!id) {
+            alert("User not logged in! Please login to save")
+        } else {
+            //dispatchToaddOrder(addOrder(cartlist, id))
+            dispatchToSaveCart(saveCartToDb(cartlist, id))
+            //navigate('/checkout/buy');
+        }    
+    }
+    
     return(
         <Fragment>
-        <h1>Cart Component</h1>
+        <h1>Checkout Component</h1>
+        <h1>User Details: </h1>
+            <td>{User.userName}</td>
+            <td>{User.street}</td>
+            <td>{User.mobile}</td>
+
         {
-            loading ? <>We are in process!!!!</> : 
-            <>
-            {
             cartList && cartList.length > 0 ?
             <Fragment>
             <table>
@@ -67,13 +80,6 @@ let CartComponent = (props)=>{
                             <th>Description</th>
                             <th>Quantity</th>
                             <th>Total</th>
-                            {
-                                props.readOnly ?  "" : 
-                                    <Fragment>
-                                        <th>Remove</th>
-                                        <th>Edit</th>
-                                    </Fragment>
-                            }
                         </tr>
                     </thead>
                     <tbody>
@@ -92,27 +98,23 @@ let CartComponent = (props)=>{
                 </table>
 
                 <CartSummaryComponent data={recalculate(cartList)}/>
-                
+
                 {
                     props.readOnly ? "" : 
                         <Fragment>
-                            <button onClick={() => clickToSaveCart(cartList, User._id)} >
-                                    Save For Checkout
+
+                            <button onClick={() => PlaceOrder(cartList, User._id)} >
+                                Place Your Vaccine Order
                             </button>
-                            
-                            <button onClick={func} >
-                                Go To Checkout
-                            </button>
+
                         </Fragment> 
                 }
 
                 </Fragment>:
-            "Not items selected to display in cart"
-            }
-            </>
+            "No items to display in cart"
         }
         </Fragment>
     )
 }
 
-export default CartComponent;
+export default CheckoutComponent;

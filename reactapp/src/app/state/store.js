@@ -12,6 +12,8 @@ import productReducer from "./product/productReducer";
 import cartReducer from "./cart/cartReducer";
 import loadingReducer from "./loading/LoadingReducer";
 import adminReducer from "./admin/adminReducer";
+import vaccineReducer from "./vaccine/vaccineReducer";
+import hospitalReducer from "./hospital/hospitalReducer";
 
 let logger = () => (next) => (action) => {
     //currying in javasript where we pass function as input and recieve function as output
@@ -26,7 +28,9 @@ export default createStore(
         adminReducer,
         productReducer,
         cartReducer,
-        loadingReducer
+        loadingReducer,
+        vaccineReducer,
+        hospitalReducer
     }),
     {},//inital state if we want to set from store instead of reducer
     applyMiddleware(logger, thunk, promise)

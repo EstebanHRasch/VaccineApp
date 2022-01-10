@@ -41,7 +41,7 @@ export const fetchProducts = ()=>{
             dispatch(addProductToStore(productresp));
         })
         .catch((err)=>{
-            console.log("Error While SAving Product", err)
+            console.log("Error While Saving Product", err)
         })
     }  
 }

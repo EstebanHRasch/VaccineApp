@@ -1,28 +1,28 @@
 let express = require("express");
 let router = express.Router({}), //router module only
-AdminDataModel = require("../datamodel/userDataModel");
+AdminDataModel = require("../datamodel/adminDataModel");
 
 //user signin signup api
 router.post("/api/signinup", (req, res)=>{ //localhost:9090/user/api/signinup
     console.log("data ", req.body); //user object that user creates entry
 
-    AdminDataModel.findOne({userName: req.body.userName}, (error, data)=>{//error first callback
+    AdminDataModel.findOne({adminName: req.body.adminName}, (error, data)=>{//error first callback
         if (error) {
             console.log("error admin sign in", error);
             res.send("Error Occurred in admin sign in");
         } else if(data) { //if data returned means user is already present
             res.send(data); //data will be the user object
         } else {
-            let userObjToSave = new AdminDataModel(req.body); //it will map each key value pair like userName, password etc
+            let adminObjToSave = new AdminDataModel(req.body); //it will map each key value pair like userName, password etc
 
             //this is a signup case and new user should be created
-            userObjToSave.save((err, usrData)=>{
+            adminObjToSave.save((err, adminData)=>{
                 if(err){
                     console.log("error admin sign in", error);
                     res.send("Error Occurred in admin sign up");
                 }else{
                     //this is going to be the case of sign up the user
-                    res.send(usrData); //data will be the user object with _id (to represent the new user saved)
+                    res.send(adminData); //data will be the user object with _id (to represent the new user saved)
                 }
             })
         }
