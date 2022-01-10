@@ -28,9 +28,11 @@ let DisplayVaccineDetails = ({vaccine})=>{
                 {vaccine.name}
                 { showDetails ?
                 <ul className={"vaccineDetails"}>
+                    <li>{vaccine.type}</li>
                     <li>{vaccine.price}</li>
-                    <li>{vaccine.desc}</li>
-                    <li>{vaccine.rating}</li>    
+                    <li>{vaccine.effect}</li> 
+                    <li>{vaccine.origin}</li> 
+                    <li>{vaccine.doses}</li>    
                     <button onClick={()=>{addVaccineToCart(vaccine)}}>Add To Cart</button>          
                 </ul>
                 :""}

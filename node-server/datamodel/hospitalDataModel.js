@@ -6,6 +6,7 @@ mongooseObj.connect("mongodb://127.0.0.1/mernstack8"); //creates db with name me
 let HospitalSchema = new schemaObj({
     name: {type:String, required:true},
     address: {type:String},
+    vaccines: {type:String},
     type: {type:String},
     charges: {type:Number}
     },

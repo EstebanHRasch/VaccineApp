@@ -21,6 +21,8 @@ import Cart from "./applicationcomponents/Components/Cart/CartComponent";
 import AdminComponent from "./applicationcomponents/Components/Admin/AdminComponent";
 import VaccineComponent from "./applicationcomponents/Components/Vaccine/VaccineComponent";
 import DisplayVaccine from "./applicationcomponents/Components/Vaccine/DisplayVaccine";
+import HospitalComponent from "./applicationcomponents/Components/Hospital/HospitalComponent";
+import DisplayHospital from "./applicationcomponents/Components/Hospital/DisplayHospital";
 
 // functional component, used as placeholder
 //when lazy loaded modules delayed
@@ -70,9 +72,11 @@ export default class AppComponent extends Component {
                     <Route path="/admin" element={<AdminComponent />} /> 
                     <Route path="/product" element={<ProductComponent />} /> 
                     <Route path="/vaccine" element={<VaccineComponent />} /> 
+                    <Route path="/hospital" element={<HospitalComponent />} /> 
                     <Route path="/cart" element={<Cart />} /> 
-                    <Route path="/displayProd" element={<DisplayProduct />} />
-                    <Route path="/displayVac" element={<DisplayVaccine />} /> 
+                    <Route path="/displayProducts" element={<DisplayProduct />} />
+                    <Route path="/displayVaccines" element={<DisplayVaccine />} />
+                    <Route path="/displayHospitals" element={<DisplayHospital />} /> 
                     <Route path="/home" element={<Home headerName={"Home from Vaccine App Component"} />} /> 
                     <Route path="/about" element={<About />} />                     
                     <Route path="/about/:id" element={<About />} />                    

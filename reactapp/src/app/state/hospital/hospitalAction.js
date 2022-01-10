@@ -5,7 +5,7 @@ export const saveHospital = (hospital)=>{
     return function (dispatch) {
         //dispatch(loading(true));
 
-        window.fetch("http://localhost:9090/hospital/api/saveHospital",{
+        window.fetch("http://localhost:9090/hospital/api/savehospital",{
             method: 'POST', //rest method type 
             headers: {
               'Accept': 'application/json',
@@ -36,7 +36,7 @@ export const fetchHospitals = ()=>{
         .then((hospitalresp)=>{
             console.log("hospital save response ", hospitalresp);
             //dispatch(loading(false));
-            dispatch(addVaccineToStore(hospitalresp));
+            dispatch(addHospitalToStore(hospitalresp));
         })
         .catch((err)=>{
             console.log("Error While Saving Hospital", err)
@@ -44,7 +44,7 @@ export const fetchHospitals = ()=>{
     }  
 }
 
-export const addHospitalToStore = (hospital)=>({
+export const addHospitalToStore = (hospitals)=>({
     type : ActionTypes.ADD_HOSPITALS_TOSTORE,
-    payload : {hospital}
+    payload : {hospitals}
 })
