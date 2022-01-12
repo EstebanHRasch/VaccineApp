@@ -1,27 +1,31 @@
-import React, {Fragment} from "react";
+import React, { useRef, useEffect, useState, Fragment, Component } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate }  from "react-router-dom";
 
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
+
 import CartItemComponent from "../Cart/CartItemComponent";
 import CartSummaryComponent from "../Cart/CartSummaryComponent";
-
-import CouponComponent from "../Coupon/CouponComponent";
-import CouponSummaryComponent from "../Coupon/CouponSummaryComponent";
-import DisplayCouponDetails from "../Coupon/CouponDisplayComponent";
-
-import { fetchCoupon } from "../../../state/coupon/couponActions";
 
 import { saveCartToDb } from "../../../state/cart/cartActions";
 import { saveOrderToDb } from "../../../state/order/orderActions";
 import { addOrder } from "../../../state/order/orderActions";
 
-let ApprovalComponent = (props)=>{
+let CheckoutComponent = (props)=>{
 
     const cartList = useSelector((state)=>state.cartReducer);
     const User = useSelector((state)=>state.userReducer.user);
-    const Admin = useSelector((state)=>state.adminReducer.admin);
+    const [AppointmentDate, setAppointmentDate] = useState(null);
 
     let dispatchToSaveCart = useDispatch();
+    let dispatchToSaveOrder = useDispatch();
+    
+    let handleAppointmentDate = (date) => {
+            
+            setAppointmentDate(date);
+            console.log("Year: "+ date.getFullYear() + "Month: "+ date.getMonth()+"Day: "+ date.getDate());
+        };
 
     let recalculate = (cartItems) => {
         let amount = 0,
@@ -46,24 +50,21 @@ let ApprovalComponent = (props)=>{
         event.preventDefault();
     }
 
-    let PlaceOrder = (cartlist, id)=>{
+    let PlaceOrder = (cartlist, id, appointmentdate)=>{
         
         if (!id) {
             alert("User not logged in! Please login to save")
         } else {
-            //dispatchToaddOrder(addOrder(cartlist, id))
+            console.log("Save order appdate: "+appointmentdate);
             dispatchToSaveCart(saveCartToDb(cartlist, id))
-            //navigate('/checkout/buy');
+            dispatchToSaveOrder(saveOrderToDb(cartlist, id, appointmentdate))
+            navigate('/checkout/buy');
         }    
     }
     
     return(
         <Fragment>
-        <h1>Approval Component</h1>
-        <h1>User Details: </h1>
-            <td>{User.userName}</td>
-            <td>{User.street}</td>
-            <td>{User.mobile}</td>
+        <h1>Checkout</h1>
 
         {
             cartList && cartList.length > 0 ?
@@ -99,22 +100,36 @@ let ApprovalComponent = (props)=>{
 
                 <CartSummaryComponent data={recalculate(cartList)}/>
 
+                <label>Select Appointment Date: </label>
+                <DatePicker
+                selected={AppointmentDate}
+                minDate={new Date()}
+                onChange={handleAppointmentDate}
+            />
+
                 {
                     props.readOnly ? "" : 
                         <Fragment>
 
-                            <button onClick={() => PlaceOrder(cartList, User._id)} >
-                                Place Your Vaccine Order
+                            <button onClick={() => PlaceOrder(cartList, User._id, AppointmentDate)} >
+                                Place Your Vaccination Appointment
                             </button>
 
                         </Fragment> 
                 }
 
+            
+
+            <h1>Vaccine appointment for: </h1>
+            <td>{User.userName}</td>
+            <td>{User.street}</td>
+            <td>{User.mobile}</td>
+
                 </Fragment>:
-            "No items to display in cart"
+            "No vaccines to display in cart"
         }
         </Fragment>
     )
 }
 
-export default ApprovalComponent;
+export default CheckoutComponent;

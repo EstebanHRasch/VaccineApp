@@ -1,5 +1,6 @@
 import React, {useState, Fragment} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate }  from "react-router-dom";
 import { saveVaccine } from "../../../state/vaccine/vaccineAction";
 import DisplayVaccine from "./DisplayVaccine";
 
@@ -26,6 +27,13 @@ let VaccineComponent = ()=>{
         dispatchToSaveVaccine(saveVaccine(vaccineObj))
 
         evt.preventDefault()
+    }
+
+    let navigate = useNavigate();
+
+    let GoToHospital = function() {      
+        
+        navigate('/hospital');
     }
 
     return(
@@ -105,6 +113,15 @@ let VaccineComponent = ()=>{
             <section>
             <DisplayVaccine/>
             </section>
+            {
+                        <Fragment>
+
+                            <button onClick={() => GoToHospital()} >
+                                See Available Hospitals
+                            </button>
+
+                        </Fragment> 
+                }
          </>
 
      </Fragment>
@@ -132,7 +149,7 @@ export default VaccineComponent;
 // 3. Approver screen to approve the User, Hospital, and Select Vaccine for a given time
 // 4. Once Approved should show all Vaccinated persons list (and number of doses supplied)
 
-// User Section/ Pateint Section To (Normal Site)
+// User Section/ Patient Section To (Normal Site)
 // 1. Should Allow users to register with all basic details (Name, Age, Profession, Contact, Address, Gender, Any Disease, Medical Certificate, etc)
 // 2. Upon Registered User should be able to see a screen with - Hospital Info, Vaccine, (Number of Doses Required), Appointment, Charges To Payment
 // 3. Once Charges are paid (just make an entry upon Pay click with confirmation) take user to new screen schedule

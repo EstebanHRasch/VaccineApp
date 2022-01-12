@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{30:function(e,n,a){"use strict";a.r(n);var c=a(0),t=a.n(c);n.default=function(e){return t.a.createElement("div",{className:"footer"},"Vaccine App")}}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{114:function(e,n,a){"use strict";a.r(n);var c=a(0),t=a.n(c);n.default=function(e){return t.a.createElement("div",{className:"footer"},"Vaccine App")}}}]);

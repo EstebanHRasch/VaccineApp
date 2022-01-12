@@ -17,11 +17,7 @@ let About = (props)=>{
     return(
         <div className="about" >  
             <h2>We promise to support .... </h2>  
-            <p className="about-content">If you’re looking for a job—a great job—we can help  
-                you get in the door at some incredible companies.  
-                Need to hire good people? We know thousands.  
-                Let us introduce you. No matter where you are,  
-                we can help you get where you want to go in your career.  
+            <p className="about-content">We help people access info on vaccines and can help you setup a vaccination appointment today  
             </p>  
             <p>id = {param}</p>
             <button className={"form-control btn btn-primary col-md-2"} 

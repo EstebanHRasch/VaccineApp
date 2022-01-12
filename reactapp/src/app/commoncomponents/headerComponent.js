@@ -20,12 +20,12 @@ let Header = (props)=>{
             <NavLink to="/user" className="button" activeClassName="success" >{userName == "" ? "Patient Login" : "Patient"} </NavLink>
             <NavLink to="/admin" className="button" activeClassName="success" >{adminName == "" ? "Admin Login" : "Admin"} </NavLink> 
             {(userName || adminName) &&
-                <React.Fragment> 
-                    <NavLink to="/product" className="button" activeClassName="success" >Product </NavLink> 
+                <React.Fragment>  
                     <NavLink to="/vaccine" className="button" activeClassName="success" >Vaccine </NavLink>
                     <NavLink to="/hospital" className="button" activeClassName="success" >Hospital </NavLink>
                     <NavLink to="/cart" className="button" activeClassName="success" >Cart </NavLink>
                     <NavLink to="/checkout" className="button" activeClassName="success" >Checkout </NavLink>
+                    <NavLink to="/approvedorder" className="button" activeClassName="success" >Approval </NavLink>
              {/* <Dropdown as={ButtonGroup}>
                 <Button variant="success">Split Button</Button>
 
@@ -39,6 +39,7 @@ let Header = (props)=>{
             </Dropdown> */}
                 </React.Fragment>
             }
+            
             <NavLink to="/about" className="button" activeClassName="success" >About </NavLink> 
         </>
     )

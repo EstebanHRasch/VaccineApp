@@ -33,11 +33,14 @@ webpackConfig = {
             },
             {
                 test:/\.(css)$/,
-                include:SRC_DIR,
-                use:['style-loader','css-loader']
+                //include:SRC_DIR,
+                //use:['style-loader','css-loader']
+                loader: 'style-loader!css-loader'
+                  
             }
         ]
     },
+    
 
     optimization: {
         minimizer: [

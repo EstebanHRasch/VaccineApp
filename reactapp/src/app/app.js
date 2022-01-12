@@ -23,6 +23,12 @@ import VaccineComponent from "./applicationcomponents/Components/Vaccine/Vaccine
 import DisplayVaccine from "./applicationcomponents/Components/Vaccine/DisplayVaccine";
 import HospitalComponent from "./applicationcomponents/Components/Hospital/HospitalComponent";
 import DisplayHospital from "./applicationcomponents/Components/Hospital/DisplayHospital";
+import CheckoutComponent from "./applicationcomponents/Components/Checkout/CheckoutComponent";
+import CheckoutBuyComponent from "./applicationcomponents/Components/Checkout/CheckoutBuyComponent";
+import RecentOrdersComponent from "./applicationcomponents/Components/Order/OrdersRecentComponent";
+import CancelOrdersComponent from "./applicationcomponents/Components/Order/OrdersCancelComponent";
+import ApprovedOrdersApprovalComponent from "./applicationcomponents/Components/Approval/ApprovedOrdersApprovalComponent";
+import ApprovedOrdersDisplayComponent from "./applicationcomponents/Components/Approval/ApprovedOrdersDisplay"
 
 // functional component, used as placeholder
 //when lazy loaded modules delayed
@@ -77,6 +83,12 @@ export default class AppComponent extends Component {
                     <Route path="/displayProducts" element={<DisplayProduct />} />
                     <Route path="/displayVaccines" element={<DisplayVaccine />} />
                     <Route path="/displayHospitals" element={<DisplayHospital />} /> 
+                    <Route path="/checkout" element={<CheckoutComponent />} />
+                    <Route path="/checkout/buy" element={<CheckoutBuyComponent />} />
+                    <Route path="/order" element={<RecentOrdersComponent />} />
+                    <Route path="/cancelorder" element={<CancelOrdersComponent />} />
+                    <Route path="/approvedorder" element={<ApprovedOrdersApprovalComponent />} />
+                    <Route path="/approvedorder/displayapprovedorders" element={<ApprovedOrdersDisplayComponent />} />
                     <Route path="/home" element={<Home headerName={"Home from Vaccine App Component"} />} /> 
                     <Route path="/about" element={<About />} />                     
                     <Route path="/about/:id" element={<About />} />                    
